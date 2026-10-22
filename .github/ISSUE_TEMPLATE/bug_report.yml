@@ -1,0 +1,92 @@
+name: Bug report
+description: Report a reproducible porting or packaging problem
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please report behavior for one exact device and ROM combination. 请提供具体机型和 ROM 版本信息。
+
+  - type: input
+    id: device
+    attributes:
+      label: Device model and codename / 设备型号和代号
+      placeholder: OnePlus 8T / kebab
+    validations:
+      required: true
+
+  - type: input
+    id: branch
+    attributes:
+      label: Repository branch / 仓库分支
+      placeholder: COS16/OOS16
+    validations:
+      required: true
+
+  - type: input
+    id: base-rom
+    attributes:
+      label: Base ROM and exact build / 底包及完整版本号
+      placeholder: ColorOS ...
+    validations:
+      required: true
+
+  - type: input
+    id: port-rom
+    attributes:
+      label: Port ROM and exact build / 移植包及完整版本号
+      placeholder: ColorOS ...
+    validations:
+      required: true
+
+  - type: input
+    id: host
+    attributes:
+      label: Host operating system and architecture / 主机系统和架构
+      placeholder: Ubuntu 24.04, x86_64
+    validations:
+      required: true
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Where does it fail? / 问题发生在哪个阶段？
+      options:
+        - Setup / 依赖安装
+        - ROM extraction / ROM 解包
+        - Patching / 移植修改
+        - Packaging / 打包
+        - Flashing / 刷机
+        - Boot or runtime / 开机或运行
+        - Other / 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce / 复现步骤
+      description: Include the command and the step that fails. / 请提供执行命令和出错步骤。
+      placeholder: |
+        1. ...
+        2. ...
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-actual
+    attributes:
+      label: Expected and actual result / 预期结果和实际结果
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant sanitized logs / 相关且已脱敏的日志
+      description: Remove personal data, device serial numbers, tokens, and other secrets. Do not attach ROM packages or proprietary files. / 请先移除个人数据、设备序列号、令牌和其他密钥。请勿上传 ROM 或专有文件。
+      render: text
+    validations:
+      required: false
